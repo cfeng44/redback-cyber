@@ -25,6 +25,7 @@ jobs:
           )
 
           users_count=${#users[@]}
+          echo $RANDOM % $users_count
           rnd_user=${users[$RANDOM % $users_count]}  
 
           echo $rnd_user
