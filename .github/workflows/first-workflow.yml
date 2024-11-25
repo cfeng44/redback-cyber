@@ -49,7 +49,7 @@ jobs:
             {
               "op": add,
               "path": "fields/System.AssignedTo",
-              "value": "s222250824@deakin.edu.au"
+              "value": "Bobby James"
             },
             {
               "op": add,
