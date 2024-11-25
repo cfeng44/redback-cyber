@@ -46,11 +46,11 @@ jobs:
               "path": "/fields/System.Title",
               "value": "Test Task"
             },
-            {
-              "op": add,
-              "path": "fields/System.AssignedTo",
-              "value": "Bobby James"
-            },
+            # {
+            #   "op": add,
+            #   "path": "fields/System.AssignedTo",
+            #   "value": "Bobby James"
+            # },
             {
               "op": add,
               "path": "fields/System.Description",
