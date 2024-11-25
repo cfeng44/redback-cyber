@@ -37,7 +37,7 @@ jobs:
           PROJECT: "Readback%20Operations%20Cyber%20Security%20Team"
           TYPE: "task"
         run: |
-          curl --verbose -X POST \
+          curl POST \
           --header "Authorization: Bearer $PAT_TOKEN" \
           --header "Content-Type: application/json-patch+json" \
           --data '[ 
@@ -47,4 +47,4 @@ jobs:
               "value": "Test Task"
             }
           ]' \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.1"
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.2-preview.3"
