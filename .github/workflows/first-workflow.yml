@@ -40,19 +40,17 @@ jobs:
           curl --verbose -X POST \
           --header "Authorization: Bearer $PAT_TOKEN" \
           --header "Content-Type: application/json-patch+json" \
-          --data '[ 
+          --data "[ 
             {
-              "op": "add",
-              "from": null,
-              "path": "/fields/System.Title",
-              "value": "Test Task"
-            },
-            {
-              "op": "add",
-              "from": null,
-              "path": "fields/System.AssignedTo",
-              "value": "Bobby James"
+              `"op`": `"add`",
+              `"path`": `"/fields/System.Title`",
+              `"value`": `"Test Task`"
             }
+            # {
+            #   "op": "add",
+            #   "path": "fields/System.AssignedTo",
+            #   "value": "Bobby James"
+            # }
             # {
             #   "op": "add",
             #   "path": "fields/System.Description",
@@ -63,5 +61,5 @@ jobs:
             #   "path": "fields/System.State",
             #   "value": "New"
             # }
-          ]' \
+          ]"" \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/task?api-version=7.1"
