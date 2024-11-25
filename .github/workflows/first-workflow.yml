@@ -42,9 +42,24 @@ jobs:
           --header "Content-Type: application/json-patch+json" \
           --data '[ 
             {
+              "op": "add",
+              "path": "/fields/System.Title",
+              "value": "Test Task"
+            },
+            {
               "op": add,
               "path": "fields/System.AssignedTo",
               "value": "s222250824@deakin.edu.au"
+            },
+            {
+              "op": add,
+              "path": "fields/System.Description",
+              "value": "Test Description"
+            },
+            {
+              "op": add,
+              "path": "fields/System.State",
+              "value": "New"
             }
           ]' \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.1"
