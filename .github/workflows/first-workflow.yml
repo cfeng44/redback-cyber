@@ -37,7 +37,7 @@ jobs:
           PROJECT: "Cybersecurity"
           TYPE: "task"
         run: |
-          curl --verbose -X POST \
+          curl POST \
           --header "Authorization: Bearer $PAT_TOKEN" \
           --header "Content-Type: application/json-patch+json" \
           --data '[ 
@@ -46,6 +46,12 @@ jobs:
               "path": "/fields/System.Title",
               "from": null,
               "value": "Test Task"
+            },
+            {
+              "op": "add",
+              "path": "/fields/System.AssignedTo",
+              "from": null,
+              "value": "s222250824@deakin.edu.au"
             }
           ]' \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?api-version=5.0"
