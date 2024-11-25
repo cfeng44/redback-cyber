@@ -42,24 +42,9 @@ jobs:
           --header "Content-Type: application/json-patch+json" \
           --data "[ 
             {
-              `"op`": `"add`",
-              `"path`": `"/fields/System.Title`",
-              `"value`": `"Test Task`"
+              "op": "add",
+              "path": "/fields/System.Title",
+              "value": "Test Task"
             }
-            # {
-            #   "op": "add",
-            #   "path": "fields/System.AssignedTo",
-            #   "value": "Bobby James"
-            # }
-            # {
-            #   "op": "add",
-            #   "path": "fields/System.Description",
-            #   "value": "Test Description"
-            # },
-            # {
-            #   "op": "add",
-            #   "path": "fields/System.State",
-            #   "value": "New"
-            # }
-          ]"" \
+          ]" \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/task?api-version=7.1"
