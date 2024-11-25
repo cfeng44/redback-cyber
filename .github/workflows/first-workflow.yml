@@ -47,17 +47,17 @@ jobs:
               "value": "Test Task"
             },
             # {
-            #   "op": add,
+            #   "op": "add",
             #   "path": "fields/System.AssignedTo",
             #   "value": "Bobby James"
             # },
             {
-              "op": add,
+              "op": "add",
               "path": "fields/System.Description",
               "value": "Test Description"
             },
             {
-              "op": add,
+              "op": "add",
               "path": "fields/System.State",
               "value": "New"
             }
