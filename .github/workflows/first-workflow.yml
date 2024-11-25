@@ -40,11 +40,11 @@ jobs:
           curl --verbose -X POST \
           --header "Authorization: Bearer $PAT_TOKEN" \
           --header "Content-Type: application/json-patch+json" \
-          --data "[ 
+          --data '[ 
             {
               "op": "add",
               "path": "/fields/System.Title",
               "value": "Test Task"
             }
-          ]" \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/task?api-version=7.1"
+          ]' \
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.1"
