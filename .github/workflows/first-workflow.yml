@@ -24,7 +24,7 @@ jobs:
             "Tristan"          
           )
 
-          users_count=${#names[@]}
+          users_count=${#users[@]}
           rnd_user=${users[$RANDOM % $users_count]}  
 
           echo $rnd_user
@@ -36,5 +36,5 @@ jobs:
         run: |
           curl \
           -H "Authorization: Bearer $PAT_TOKEN" \
-          "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/$QUERY_ID/?api-version=7.1" \
-          | cat
+          "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/$QUERY_ID?api-version=7.1" \
+          
