@@ -44,7 +44,8 @@ jobs:
             {
               "op": "add",
               "path": "/fields/System.Title",
+              "from": null,
               "value": "Test Task"
             }
             ]' \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.2-preview.3"
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=5.0"
