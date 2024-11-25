@@ -38,3 +38,7 @@ jobs:
           -H "Authorization: Bearer $PAT_TOKEN" \
           "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/$QUERY_ID?api-version=7.1" \
           
+      - name: Debug Variables
+        run: |
+          echo "PAT_TOKEN is set: ${PAT_TOKEN:+yes}"
+          echo "QUERY_ID: $QUERY_ID"
