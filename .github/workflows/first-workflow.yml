@@ -13,3 +13,7 @@ jobs:
     steps:
       - name: Get IP
         run: ip addr | grep "inet "
+
+      - name: inline-py
+        run: |
+          echo "hi"
