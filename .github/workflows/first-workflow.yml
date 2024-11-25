@@ -4,7 +4,7 @@ name: First Workflow
 on:
   push:
     branches:
-     - action-test
+     - automation-test
 
 # Jobs to run
 jobs:
