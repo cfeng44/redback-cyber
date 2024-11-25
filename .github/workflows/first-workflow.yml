@@ -11,12 +11,21 @@ jobs:
   test-job:
     runs-on: self-hosted
     steps:
-      - name: Get IP
-        run: ip addr | grep "inet "
-
       - name: inline-py
+        shell: bash
         run: |
-          names=("Codey" "Bob" "Geoff")
-          random_name=${names[$RANDOM % ${#names[@]}]}  
+          users=(
+            "Codey" 
+            "Amir" 
+            "Ashan"
+            "Ben"
+            "Candice"
+            "Manik"
+            "Richard"
+            "Tristan"          
+          )
 
-          echo $random_name
+          users_count=${#names[@]}
+          rnd_user=${users[$RANDOM % $users_count]}  
+
+          echo $rnd_user
