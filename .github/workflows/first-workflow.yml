@@ -48,4 +48,4 @@ jobs:
               "value": "Test Task"
             }
           ]' \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=5.0"
+          "https://dev.azure.com/{${ORG}}/{${PROJECT}}/_apis/wit/workitems/${TYPE}?api-version=5.0"
