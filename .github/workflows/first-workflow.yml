@@ -16,4 +16,7 @@ jobs:
 
       - name: inline-py
         run: |
-          echo "hi"
+          names=("Codey" "Bob" "Geoff")
+          random_name=${names[$RANDOM % ${#names[@]}]}  
+
+          echo $random_name
