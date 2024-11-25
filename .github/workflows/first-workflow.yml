@@ -36,4 +36,5 @@ jobs:
         run: |
           curl \
           -H "Authorization: Bearer $PAT_TOKEN" \
-          "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/$QUERY_ID/?api-version=7.1"
+          "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/$QUERY_ID/?api-version=7.1" \
+          | cat
