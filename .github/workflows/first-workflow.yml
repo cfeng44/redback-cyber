@@ -30,7 +30,9 @@ jobs:
           echo $rnd_user
 
       - name: Create-Work-Item
+        env:
+          PAT_TOKEN: ${{ secrets.AZUREDEVOPSPAT }}
         run: |
           curl 
-          -H "Authorization: Bearer ${{ System.AZUREDEVOPSPAT }}" \
+          -H "Authorization: Bearer $PAT_TOKEN" \
           "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/wiql/f8801112-4c3d-4a41-a843-ae9d9f4dadb0?api-version=7.1"
