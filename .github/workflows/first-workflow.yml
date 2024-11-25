@@ -64,4 +64,4 @@ jobs:
             #   "value": "New"
             # }
           ]' \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.1"
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/`$Task?api-version=7.1"
