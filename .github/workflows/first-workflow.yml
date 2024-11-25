@@ -35,7 +35,7 @@ jobs:
           PAT_TOKEN: ${{ secrets.AZUREDEVOPSPAT }}
           ORG: "RedbackOperationsTEST"
           PROJECT: "Readback%20Operations%20Cyber%20Security%20Team"
-          TYPE: "Task"
+          TYPE: "task"
         run: |
           curl --verbose -X POST \
           --header "Authorization: Bearer $PAT_TOKEN" \
@@ -43,23 +43,25 @@ jobs:
           --data '[ 
             {
               "op": "add",
+              "from": null,
               "path": "/fields/System.Title",
               "value": "Test Task"
             },
+            {
+              "op": "add",
+              "from": null,
+              "path": "fields/System.AssignedTo",
+              "value": "Bobby James"
+            }
             # {
             #   "op": "add",
-            #   "path": "fields/System.AssignedTo",
-            #   "value": "Bobby James"
+            #   "path": "fields/System.Description",
+            #   "value": "Test Description"
             # },
-            {
-              "op": "add",
-              "path": "fields/System.Description",
-              "value": "Test Description"
-            },
-            {
-              "op": "add",
-              "path": "fields/System.State",
-              "value": "New"
-            }
+            # {
+            #   "op": "add",
+            #   "path": "fields/System.State",
+            #   "value": "New"
+            # }
           ]' \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.1"
