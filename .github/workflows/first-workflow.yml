@@ -33,8 +33,8 @@ jobs:
       - name: Create-Work-Item
         env:
           PAT_TOKEN: ${{ secrets.AZUREDEVOPSPAT }}
-          ORG: "RedbackOperationsTEST"
-          PROJECT: "Readback%20Operations%20Cyber%20Security%20Team"
+          ORG: "redbackoperations"
+          PROJECT: "Cybersecurity"
           TYPE: "task"
         run: |
           curl --verbose -X POST \
