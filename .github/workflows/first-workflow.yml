@@ -1,4 +1,4 @@
-name: First Workfloww
+name: First Workflow
 
 # The event/s that triggers the workflow
 on:
@@ -11,30 +11,40 @@ jobs:
   test-job:
     runs-on: self-hosted
     steps:
-      - name: Get-User
-        run: |
-          users=(
-            "Codey" 
-            "Amir" 
-            "Ashan"
-            "Ben"
-            "Candice"
-            "Manik"
-            "Richard"
-            "Tristan"          
-          )
+      # - name: Get-User
+      #   run: |
+      #     users=(
+      #       "Codey" 
+      #       "Amir" 
+      #       "Ashan"
+      #       "Ben"
+      #       "Candice"
+      #       "Manik"
+      #       "Richard"
+      #       "Tristan"          
+      #     )
 
-          users_count=${#users[@]}
-          echo $RANDOM % $users_count
-          rnd_user=${users[$RANDOM % $users_count]}  
+      #     users_count=${#users[@]}
+      #     echo $RANDOM % $users_count
+      #     rnd_user=${users[$RANDOM % $users_count]}  
 
-          echo $rnd_user
+      #     echo $rnd_user
 
       - name: Create-Work-Item
         env:
           PAT_TOKEN: ${{ secrets.AZUREDEVOPSPAT }}
-          QUERY_ID: "06e965be-0e9b-4023-9b46-be51fb59e1b4"
+          ORG: "RedbackOperationsTEST"
+          PROJECT: "Readback%20Operations%20Cyber%20Security%20Team"
+          TYPE: "Task"
         run: |
-          curl \
-          -H "Authorization: Bearer $PAT_TOKEN" \
-          "https://dev.azure.com/RedbackOperationsTEST/Readback%20Operations%20Cyber%20Security%20Team/_apis/wit/queries/${QUERY_ID}?api-version=7.1" \
+          curl --verbose -X POST \
+          --header "Authorization: Bearer $PAT_TOKEN" \
+          --header "Content-Type: application/json-patch+json" \
+          --data '[ 
+            {
+              "op": add,
+              "path": "fields/System.AssignedTo",
+              "value": "s222250824@deakin.edu.au"
+            }
+          ]' \
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/${TYPE}?api-version=7.1"
