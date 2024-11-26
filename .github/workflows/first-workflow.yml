@@ -56,4 +56,5 @@ jobs:
               "value": "s222250824@deakin.edu.au"
             }
           ]' \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?suppressNotifications={true}&api-version=5.0"
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?suppressNotifications={true}&api-version=5.0" \
+          | jq
