@@ -16,10 +16,7 @@ name: Pull Request Review Setup
 #     branches:
 #      - main
 
-on:
-  push:
-    branches:
-      -automation-test
+on: [push]
 
 env:
   PAT_TOKEN:  "${{ secrets.AZUREDEVOPSPAT }}"
