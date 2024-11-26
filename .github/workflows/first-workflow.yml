@@ -65,7 +65,7 @@ jobs:
               "op": "add",
               "path": "/fields/System.Title",
               "from": null,
-              "value": "'"${RND_USER}"'"
+              "value": "${RND_USER}"
             },
             {
               "op": "add",
