@@ -53,6 +53,7 @@ jobs:
           NOTIF:      "suppressNotifications={true}"
           TYPE:       "task"
           USER:       "${RND_USER}"
+          TEST:       "${{ github.event.head_commit.message}}"
 
           PR_TITLE:   "PR: ${{ github.event.pull_request.title }}"
         
@@ -72,6 +73,12 @@ jobs:
               "path": "/fields/System.AssignedTo",
               "from": null,
               "value": "s222250824@deakin.edu.au"
+            },
+            {
+              "op": "add",
+              "path": "fields/System.Description",
+              "from": null,
+              "value": "'${TEST}'"
             }
             ]' \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?${NOTIF}&${API_VER}" \
