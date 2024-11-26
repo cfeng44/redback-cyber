@@ -58,24 +58,18 @@ jobs:
           --header "Authorization: Bearer $PAT_TOKEN" \
           --header "Content-Type: application/json-patch+json" \
           --data '[ 
-
-            # Title
             {
               "op": "add",
               "path": "/fields/System.Title",
               "from": null,
               "value": "final test"
-              # "value": "${PR_TITLE}"
             },
-
-            # Assigned to
             {
               "op": "add",
               "path": "/fields/System.AssignedTo",
               "from": null,
               "value": "${RND_USER}"
             }
-
             ]' \
           "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?${NOTIF}&${API_VER}" \
           | jq
