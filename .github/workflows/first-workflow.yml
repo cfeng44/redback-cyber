@@ -51,6 +51,8 @@ jobs:
           TEAM:       "SecDevOps"
           API_VER:    "api-version=7.1"
           NOTIF:      "suppressNotifications={true}"
+          TYPE:       "task"
+          USER:       "${RND_USER}"
 
           PR_TITLE:   "PR: ${{ github.event.pull_request.title }}"
         
@@ -63,7 +65,7 @@ jobs:
               "op": "add",
               "path": "/fields/System.Title",
               "from": null,
-              "value": "final test"
+              "value": "'"${RND_USER}"'"
             },
             {
               "op": "add",
