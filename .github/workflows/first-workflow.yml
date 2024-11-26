@@ -1,60 +1,84 @@
-name: First Workflow
+# --------------------------------------------------------
+#   File:         PR_Review_Automation.yaml
+#   Author:       Codey Funston [s222250824@deakin.edu.au]
+# 
+#   Description:  Creates Azure DevOps task for each PR
+#                 in repo. Randomly assigns a team 
+#                 member to review.
+# --------------------------------------------------------
 
-# The event/s that triggers the workflow
-on:
-  push:
-    branches:
-     - automation-test
+name: Pull Request Review Setup
 
-# Jobs to run
+# Runs on every PR in main branch.
+# on:
+#   pull_request:
+#     types: [opened, reopened]
+#     branches:
+#      - main
+
+  on:
+    push:
+      branches:
+        -automation-test
+
+env:
+  PAT_TOKEN:  "${{ secrets.AZUREDEVOPSPAT }}"
+
+  # URI Params
+  ORG:        "redbackoperations"
+  PROJECT:    "Cybersecurity"
+  TEAM:       "SecDevOps"
+  API_VER:    "api-version=7.1"
+  NOTIF:      "suppressNotifications={true}"
+
+  PR_TITLE:   "PR: ${{ github.event.pull_request.title }}"
+
 jobs:
-  test-job:
+  POST-to-Azure-DevOps-API:
     runs-on: ubuntu-latest
+
     steps:
-      # - Set-Up
+      - name: Get Random Team Member
+        run: |
+          users=(
+            "s222250824@deakin.edu.au",   # Codey
+            "ben.stephens@deakin.edu.au", # Ben
+            "smithcan@deakin.edu.au",     # Candice
+            "s224019868@deakin.edu.au",   # Ashan
+            "azandieh@deakin.edu.au",     # Amir
+            "s222092193@deakin.edu.au",   # Manik
+            "rwhellum@deakin.edu.au",     # Richard
+            "tapperley@deakin.edu.au"     # Tristan
+          )
 
-      # - name: Get-User
-      #   run: |
-      #     users=(
-      #       "s222250824@deakin.edu.au",   # Codey
-      #       "ben.stephens@deakin.edu.au", # Ben
-      #       "smithcan@deakin.edu.au",     # Candice
-      #       "s224019868@deakin.edu.au",   # Ashan
-      #       "azandieh@deakin.edu.au",     # Amir
-      #       "s222092193@deakin.edu.au",   # Manik
-      #       "rwhellum@deakin.edu.au",     # Richard
-      #       "tapperley@deakin.edu.au"     # Tristan
-      #     )
+          users_count=${#users[@]}
+          rnd_user=${users[$RANDOM % $users_count]} 
+          echo "RND_USER=${rnd_user}" >> $GITHUB_ENV
 
-      #     users_count=${#users[@]}
-      #     echo $RANDOM % $users_count
-      #     rnd_user=${users[$RANDOM % $users_count]}  
-
-      #     echo $rnd_user
-
-      - name: Create-Work-Item
-        env:
-          PAT_TOKEN: ${{ secrets.AZUREDEVOPSPAT }}
-          ORG: "redbackoperations"
-          PROJECT: "Cybersecurity"
-          TYPE: "task"
+      - name: Create Task
         run: |
           curl POST \
           --header "Authorization: Bearer $PAT_TOKEN" \
           --header "Content-Type: application/json-patch+json" \
           --data '[ 
+
+            # Title
             {
               "op": "add",
               "path": "/fields/System.Title",
               "from": null,
-              "value": "Test Task 2"
+              "value": "final test"
+              # "value": "${PR_TITLE}"
             },
+
+            # Assigned to
             {
               "op": "add",
               "path": "/fields/System.AssignedTo",
               "from": null,
-              "value": "s222250824@deakin.edu.au"
+              "value": "${RND_USER}"
             }
-          ]' \
-          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?suppressNotifications={true}&api-version=5.0" \
+
+            ]' \
+          "https://dev.azure.com/${ORG}/${PROJECT}/_apis/wit/workitems/\$${TYPE}?${NOTIF}&${API_VER}" \
           | jq
