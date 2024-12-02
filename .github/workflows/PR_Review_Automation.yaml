@@ -12,15 +12,23 @@ name: Pull Request Review Setup
 # Runs on every PR in main branch.
 on: 
   pull_request:
+
+    # Types are the actions that trigger the webhook event.
     types: [opened, reopened, synchronize]
+
     branches:
       - main
 
 jobs:
   POST-to-Azure-DevOps-API:
+
+    # Workflow is run on an Ubuntu container hosted by GitHub. It is a new
+    # container each time with ephemeral memory.
     runs-on: ubuntu-latest
 
     steps:
+      
+      
       - name: Get Random Team Member
         run: |
           users=(
