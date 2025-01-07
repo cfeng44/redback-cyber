@@ -9,4 +9,4 @@ The scripts **cannot** damage your repository. They only **get** information fro
 Below are visual overviews of the script/data storage and information flow for the workflow.
 
 ![flow](./img/PR_Automation_Flow_Overview.png)
-![flow](./img/Storage_Config.png.png)
+![flow](./img/Storage_Config.png)
