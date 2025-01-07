@@ -20,7 +20,9 @@ Note: In the flow overview diagram there is a round robin reviewer selection. Th
 6. Now go to **Repository Settings >> Actions >> General** and ensure the following:
 
 ![action-permissions](./img/actions_permissions.png)
+---
 ![running-from-fork](./img/running-from-fork.png)
+---
 ![wflow-permissions](./img/wflow-permissions.png)
 
 
