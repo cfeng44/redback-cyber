@@ -25,6 +25,8 @@ Note: In the flow overview diagram there is a round robin reviewer selection. Th
 ---
 ![wflow-permissions](./img/wflow-permissions.png)
 
-
+## Flow and Storage
+---
 ![flow](./img/PR_Automation_Flow_Overview.png)
+---
 ![storage](./img/Storage_Config.png)
